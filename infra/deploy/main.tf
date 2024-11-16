@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket               = "devops-recipe-app-tf-state-marik"
     key                  = "tf-state-deploy"
-    workspace_key_prefix = "tf-state_deploy_env"
+    workspace_key_prefix = "tf-state-deploy-env"
     region               = "eu-central-1"
     encrypt              = true
     dynamodb_table       = "devops-recipe-app-api-tf-lock"
