@@ -1,6 +1,6 @@
 variable "tf_state_bucket" {
   description = "Name of S3 bucket in AWS for staging TF state"
-  default     = "devops-recipe-app-tf-sate"
+  default     = "devops-recipe-app-tf-state-marik"
 }
 
 variable "tf_state_lock_table" {
