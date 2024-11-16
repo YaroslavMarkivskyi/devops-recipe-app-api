@@ -1,0 +1,29 @@
+name: Destroy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environtment:
+        type: choice
+        description: Which environtment to remove AWSresources for?
+        options:
+          - staging
+          - prod
+
+jobs:
+  destroy:
+    name: Destroy
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Terraform Destroy
+        env:
+          AWS_ACCESS_ID: ${{ vars.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          export TF_WORKSPACE=${{ github.event.inputs.environtment }}
+          cd infra/
+          docker compose run --rm terraform -chdir=destroy/ init
+          docker compose run --rm terraform -chdir=destroy/ destroy -auto-approve
+ 
