@@ -26,7 +26,7 @@ jobs:
           if [[ $GITHUB_REF == 'ref/heads/prod' ]]; then
             echo "prod" > .workspace
           else
-            echo "stading" > .workspace
+            echo "staging" > .workspace
           fi
       - name: Push to ECR
         env:
