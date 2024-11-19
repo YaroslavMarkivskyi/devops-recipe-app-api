@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "api" {
 
   container_definitions = jsonencode(
     [
-              {
+      {
         name              = "api"
         image             = var.ecr_app_image
         essential         = true
